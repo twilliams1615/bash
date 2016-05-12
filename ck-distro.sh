@@ -1,6 +1,5 @@
 #!/bin/sh
-# Detects which OS and if it is Linux then it will detect which Linux
-# Distribution.
+# Detects which OS and if it is Linux then it will detect which Linux distro is running.
 
 OS=`uname -s`
 REV=`uname -r`
