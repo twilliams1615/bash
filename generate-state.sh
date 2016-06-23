@@ -1,7 +1,8 @@
 #!/bin/bash
 
 ###################################
-#Creates a file.managed state file#
+#Creates a salt stack             #
+#file.managed state file          #
 #Uses a list of files specified   #
 #Set BASEDIR to the root directory#
 # -that files should live         #
