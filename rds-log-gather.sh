@@ -12,7 +12,7 @@
  ################################################################################
 
 URL='https://collectors.us2.sumologic.com/receiver/v1/http/REDACTED'
-DB=$(rds-describe-db-instances |grep DBINSTANCE |awk '{print $2}'| sed 's/:.*//')
+DB=$(aws rds describe-db-instances |grep DBInstanceIdentifier |grep -v ReadReplica |awk '{print $2}'| sed 's/:.*//; s/\"//g; s/\,//g')
 
 for rds in $DB
 do
