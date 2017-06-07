@@ -5,7 +5,8 @@
 ### Requires a tile to be used                                                      ###
 #######################################################################################
 
-email="insert email address"
+emailto="insert email address"
+emailfrom="insert email address"
 while true
 do
     datefile=$(date +"%m%d%Y%H%M%S%N")
@@ -22,7 +23,7 @@ do
     else
 	supervisorctl restart mapserv:*
 	echo "$(hostname) restarted mapserver at $(date) for status $status" >> $logs
-	tail -n1 $logs | mail -aFrom:mgoldman@iteris.com -s "$(hostname) http status is $status" $email
+	tail -n1 $logs | mail -aFrom:$emailfrom -s "$(hostname) http status is $status" $emailto
 	sleep 5
     fi
     done
