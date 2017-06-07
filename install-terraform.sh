@@ -3,7 +3,7 @@ set -e
 cd ~
 
 tver=0.9.5
-pver=0.10.2 
+pver=1.0.0
 terraform=terraform_"${tver}"
 packer=packer_"${pver}"
 
