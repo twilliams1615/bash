@@ -1,8 +1,8 @@
 #!/bin/bash
 
-JIRA_HOST="somehost.example.com"
-JIRA_USER="someuser"
-JIRA_PASS="somepass"
+JIRA_HOST="hostname"
+JIRA_USER="user"
+JIRA_PASS="pass"
 # Set the user and password in a settings file
 # instead of in the script
 . /etc/default/jira
