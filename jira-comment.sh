@@ -75,9 +75,13 @@ test -z "$CODETAG" || echo -n -e "\n${CODETAG}" >> "${OUTFILE}".json
 test -z "$FOOTER" || echo -n -e "\n${FOOTER}" >> "${OUTFILE}".json
 echo -e '"\n}' >> "${OUTFILE}".json
 
+# Post the comment
 curl -s -S -u $JIRA_USER:$JIRA_PASS -X POST --data @"${OUTFILE}".json -H "Content-Type: application/json" https://$JIRA_HOST/rest/api/latest/issue/"${TICKET}"/comment 2>&1 >> "$OUTFILE"
 
 if [ $? -ne 0 ]; then
   echo "Creating Jira Comment failed"
   exit 1
 fi
+
+# Cleanup
+rm -f $OUTFILE
