@@ -16,7 +16,7 @@ usage ()
 	Usage : install-terraform.sh [new version]
 
 	Installs the version of terraform specified. Must be ran with sudo.
-        Specify the version numver you wish to install. A list of version can be found at:
+        Specify the version number you wish to install. A list of version can be found at:
         https://www.terraform.io/downloads.html
 EOF
     exit
@@ -58,11 +58,7 @@ else
     if [[ "${choice}" == 'y' ]] || [[ "${choice}" = 'Y' ]]
     then
 	echo "Continuing with install of v${newver} ..."   
-        curl -O ${URL}
-        unzip terraform_"${newtver}"_linux_amd64.zip -d /usr/local/bin/
-        # Cleanup
-        rm terraform_"${newtver}"_linux_amd64.zip
-	# verify we're all set to terraform
+        curl -O "${URL}" && unzip terraform_"${newver}"_linux_amd64.zip -d /usr/local/bin/ && rm terraform_"${newver}"_linux_amd64.zip
 	terraform -v
     fi
 fi
