@@ -26,7 +26,7 @@ This script adds a comment to a Jira ticket based on
 command-line arguments.
 
 OPTIONS:
-  -h              Show usage information (this message).
+  -h | -?         Show usage information (this message).
   -t TICKET       The Jira ticket name (ie COPS-101)
   -f FILENAME     A file containing content to add as Jira comment (or leave off to read from pipe)
   -H HEADER_TEXT  Text to put at the beginning of the comment
@@ -57,9 +57,10 @@ while getopts ":t:f:H:F:Ch" flag; do
     C)
       CODETAG='{code}'
       ;;
-    \?)
-      echo "Invalid option: -$OPTARG"
-      exit 1
+    ?)
+      usage
+      #echo "Invalid option: -$OPTARG"
+      exit 3
       ;;
     :)
       echo "Option -$OPTARG requires an argument"
