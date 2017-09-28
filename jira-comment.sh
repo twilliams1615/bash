@@ -1,8 +1,8 @@
 #!/bin/bash
 
-JIRA_HOST="hostname"
-JIRA_USER="user"
-JIRA_PASS="pass"
+JIRA_HOST="somehost.example.com"
+JIRA_USER="someuser"
+JIRA_PASS="somepass"
 # Set the user and password in a settings file
 # instead of in the script
 . /etc/default/jira
@@ -15,16 +15,23 @@ usage() {
 Usage:
   $0 [-h | -t TICKET <-f FILENAME> <-H "Header text"> <-F "Footer text"> <-C>]
 
+Examples:
+  This will add a comment using -H and the contents of the file specified, wrapped in a code block.
+      command -t cops-101 -H "text before a code block" -f /path/to/file.txt -C
+  
+  This will use the output of a command as the comment
+      grep 'some error' /var/log/error | command -t cops-101 
+
 This script adds a comment to a Jira ticket based on
 command-line arguments.
 
 OPTIONS:
   -h              Show usage information (this message).
-  -t TICKET       The Jira ticket name (ie SA-101)
-  -f FILENAME     A file containing content to past in the Jira comment (or - to read from pipe)
+  -t TICKET       The Jira ticket name (ie COPS-101)
+  -f FILENAME     A file containing content to add as Jira comment (or leave off to read from pipe)
   -H HEADER_TEXT  Text to put at the beginning of the comment
   -F FOOTER_TEXT  Text to put at the end of the comment
-  -C              Wrap comment in a {code} tags
+  -C              Wrap comment in a {code} tags (does not wrap text from -H or -F, only text parsed from another command or from the file specified with -f)
 EOF
 }
 
