@@ -1,5 +1,13 @@
 #!/bin/bash
 
+##################################################################################
+# Inserts a comment into a JIRA issue
+#
+# Can take the output of a command or a file as a comment
+##################################################################################
+
+
+
 JIRA_HOST="somehost.example.com"
 JIRA_USER="someuser"
 JIRA_PASS="somepass"
@@ -15,15 +23,15 @@ usage() {
 Usage:
   $0 [-h | -t TICKET <-f FILENAME> <-H "Header text"> <-F "Footer text"> <-C>]
 
+This script adds a comment to a Jira ticket based on                                                                                                                                                  
+command-line arguments.
+
 Examples:
   This will add a comment using -H and the contents of the file specified, wrapped in a code block.
       command -t cops-101 -H "text before a code block" -f /path/to/file.txt -C
   
   This will use the output of a command as the comment
       grep 'some error' /var/log/error | command -t cops-101 
-
-This script adds a comment to a Jira ticket based on
-command-line arguments.
 
 OPTIONS:
   -h | -?         Show usage information (this message).
