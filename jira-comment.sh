@@ -6,13 +6,13 @@
 # Can take the output of a command or a file as a comment
 ##################################################################################
 
-
-
-JIRA_HOST="somehost.example.com"
-JIRA_USER="someuser"
-JIRA_PASS="somepass"
-# Set the user and password in a settings file
+# Set the host, user and password in a settings file such as /etc/default/jira
 # instead of in the script
+#JIRA_HOST="somehost.example.com"
+#JIRA_USER="someuser"
+#JIRA_PASS="somepass"
+
+# Sets the variables above according to the file. 
 . /etc/default/jira
 
 OUTFILE="/tmp/create_jira_comment-$(date +%Y%m%d-%H%M%S)"
