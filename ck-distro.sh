@@ -31,7 +31,7 @@ s/VERSION.*//`
 //`
 	elif [ -f /etc/lsb-release ]; then
 	    DIST=""
-	    REV=`cat /etc/lsb-release |grep DISTRIB_DESC`
+	    REV=`cat /etc/lsb-release |grep DISTRIB_DESC | grep -Eo '["\047].*["\047]'`
 
 	elif [ -f /etc/mandrake-release ] ; then
 		DIST='Mandrake'
