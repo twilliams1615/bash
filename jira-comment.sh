@@ -40,6 +40,7 @@ OPTIONS:
   -H HEADER_TEXT  Text to put at the beginning of the comment
   -F FOOTER_TEXT  Text to put at the end of the comment
   -C              Wrap comment in a {code} tags (does not wrap text from -H or -F, only text parsed from another command or from the file specified with -f)
+  -c CLONE_TICKET Used to clone an existing ticket. Use with -t
 EOF
 }
 
@@ -101,3 +102,7 @@ fi
 
 # Cleanup
 rm -f $OUTFILE
+
+
+## adding function to clone existing ticket
+
