@@ -7,7 +7,7 @@ MACH=$(uname -m)
 
 GetVersionFromFile()
 {
-	VERSION=$(cat $1 | tr "\n" ' ' | sed s/.*VERSION.*=\ // )
+	VERSION=$(cat "$1" | tr "\n" ' ' | sed s/.*VERSION.*=\ // )
 }
 
 if [ "${OS}" = "SunOS" ] ; then
@@ -21,7 +21,7 @@ elif [ "${OS}" = "Linux" ] ; then
 	if [ -f /etc/redhat-release ] ; then
 		DIST='RedHat'
 		PSUEDONAME=$(cat /etc/redhat-release | sed s/.*\(// | sed s/\)//)
-		REV= `cat /etc/redhat-release | sed s/.*release\ // | sed s/\ .*//`
+		REV=$(cat /etc/redhat-release | sed s/.*release\ // | sed s/\ .*//)
 	elif [ -f /etc/SuSE-release ] ; then
 		DIST=$(cat /etc/SuSE-release | tr "\n" ' '| sed s/VERSION.*//)
 		REV=$(cat /etc/SuSE-release | tr "\n" ' ' | sed s/.*=\ //)
@@ -46,5 +46,5 @@ elif [ "${OS}" = "Linux" ] ; then
 
 fi
 
-echo ${OSSTR}
+echo "${OSSTR}"
 
