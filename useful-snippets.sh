@@ -23,7 +23,7 @@ echo "The script took ${DIFF} minutes to run"
 ### This function can be used to log time of outputs with timestamps
 # Call the function using 'log "my string to be logged"'
 log() {
-     echo [`date +%Y-%m-%d\ %H:%M:%S`] $*
+     echo [$(date +%Y-%m-%d\ %H:%M:%S)] "$*"
 }
 
 
@@ -34,7 +34,7 @@ check_process() {
 	echo "Checking if process $1 exists..."
 	[ "$1" = "" ]  && return 0
 	PROCESS_NUM=$(ps -ef | grep "$1" | grep -v "grep" | wc -l)
-	if [ $PROCESS_NUM -ge 1 ];
+	if [ "$PROCESS_NUM" -ge 1 ];
 	then
 	        return 1
 	else
@@ -64,7 +64,7 @@ sendEmail() {
 		scripttime="$DIFF minutes.";
 	fi;
 	content="$content. Exec Time: $scripttime"
-	echo $content | mail -s "$subject" $email_list
+	echo "$content" | mail -s "$subject" "$email_list"
 	exit;
 }
 
